@@ -3,17 +3,24 @@ $(document).ready(function () {
     $('.btn').click(function (e) {
         e.preventDefault();
 
-        let a = m => {
-            if (!isNaN(m)) {
+        if (!$.trim($('input').val()) == '') {
+
+            let n = (m) => {
                 for (let i = 1; i <= m; i++) {
                     $('.col-md-12').append(`<div class="minibox">${m}</div>`);
                 }
-            } else if (!$.trim($('input').val()) == '') {
-                $('.col-md-12').append(`<div class="minibox">${m}</div>`);
             }
+
+            let s = (h) => isNaN(h)
+                ? $('.col-md-12').append(`<div class="minibox">${h}</div>`)
+                : '';
+
+            n($('input').val());
+            s($('input').val());
         }
-        a($('input').val());
+
         $('input').val('');
+
     });
 });
 
